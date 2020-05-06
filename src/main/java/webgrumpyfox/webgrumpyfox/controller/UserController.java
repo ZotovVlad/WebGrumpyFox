@@ -11,11 +11,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @Controller
-public class FilmController {
+public class UserController {
 
     private final UserService userService;
 
-    public FilmController(UserService userService) {
+    public UserController(UserService userService) {
         this.userService = userService;
     }
 
