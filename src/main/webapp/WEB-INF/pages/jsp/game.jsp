@@ -49,7 +49,7 @@
 
             $(document).ready(function(){
                 updateRatingGame();
-                setInterval('show()', 5000);
+                setInterval('updateRatingGame()', 5000);
             });
         });
         function updateRatingGame() {
