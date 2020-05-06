@@ -3,6 +3,7 @@ package webgrumpyfox.webgrumpyfox.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import webgrumpyfox.webgrumpyfox.model.AjaxResponseBody;
 import webgrumpyfox.webgrumpyfox.model.Game;
 import webgrumpyfox.webgrumpyfox.service.GameService;
 
@@ -20,10 +21,11 @@ public class GameController {
     }
 
     @RequestMapping(value = "/game/{id}", method = RequestMethod.GET)
-    public ModelAndView editPage(@PathVariable("id") int id) {
+    public ModelAndView game(@PathVariable("id") int id) {
         Game game = gameService.getById(id);
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("/game");
+        modelAndView.addObject("gameId", game.getId());
         modelAndView.addObject("gameName", game.getName());
         modelAndView.addObject("gameDescription", game.getDescription());
         modelAndView.addObject("gameAuthor", game.getAuthor());
@@ -45,6 +47,43 @@ public class GameController {
         modelAndView.addObject("pagesCount", pagesCount);
         this.page = page;
         return modelAndView;
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/game/{id}/updateRatingGame", method = RequestMethod.GET)
+    public AjaxResponseBody updateRatingGame(@PathVariable("id") int id) {
+        Game game = gameService.getById(id);
+        AjaxResponseBody result = new AjaxResponseBody();
+        result.setCode("200");
+        result.setMsg("");
+        result.setResult(Integer.toString(game.getRating()));
+        return result;
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/game/{id}/likeGame", method = RequestMethod.GET)
+    public AjaxResponseBody likeGame(@PathVariable("id") int id) {
+        Game game = gameService.getById(id);
+        game.setRating(game.getRating() + 1);
+        gameService.edit(game);
+        AjaxResponseBody result = new AjaxResponseBody();
+        result.setCode("200");
+        result.setMsg("");
+        result.setResult(Integer.toString(game.getRating()));
+        return result;
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/game/{id}/dislikeGame", method = RequestMethod.GET)
+    public AjaxResponseBody dislikeGame(@PathVariable("id") int id) {
+        Game game = gameService.getById(id);
+        game.setRating(game.getRating() - 1);
+        gameService.edit(game);
+        AjaxResponseBody result = new AjaxResponseBody();
+        result.setCode("200");
+        result.setMsg("");
+        result.setResult(Integer.toString(game.getRating()));
+        return result;
     }
 
 }

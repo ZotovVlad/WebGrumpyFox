@@ -28,7 +28,7 @@
         <th>Awards</th>
         <th colspan="2">action</th>
     </tr>
-    <c:forEach var="game" items="${gamesList / 2}" varStatus="i">
+    <c:forEach var="game" items="${gamesList}" varStatus="i">
         <tr>
             <td>${i.index + 1 + (page - 1) * 10}</td>
             <td>${game.name}</td>
