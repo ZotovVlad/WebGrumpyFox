@@ -3,17 +3,15 @@ package webgrumpyfox.webgrumpyfox.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-import webgrumpyfox.webgrumpyfox.model.AjaxResponseBody;
 import webgrumpyfox.webgrumpyfox.model.Game;
-import webgrumpyfox.webgrumpyfox.model.User;
 import webgrumpyfox.webgrumpyfox.service.GameService;
-import webgrumpyfox.webgrumpyfox.service.UserService;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import java.util.List;
 
 @Controller
 public class GameController {
+
+    private int page;
 
     private final GameService gameService;
 
@@ -21,23 +19,32 @@ public class GameController {
         this.gameService = gameService;
     }
 
-    @ResponseBody
-    @RequestMapping(value = "/rating/getRatingResult")
-    public AjaxResponseBody getSearchResultViaAjax(@RequestBody Game game) {
+    @RequestMapping(value = "/game/{id}", method = RequestMethod.GET)
+    public ModelAndView editPage(@PathVariable("id") int id) {
+        Game game = gameService.getById(id);
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("/game");
+        modelAndView.addObject("gameName", game.getName());
+        modelAndView.addObject("gameDescription", game.getDescription());
+        modelAndView.addObject("gameAuthor", game.getAuthor());
+        modelAndView.addObject("gameRating", game.getRating());
+        modelAndView.addObject("gameAwards", game.getAwards());
+        return modelAndView;
+    }
 
-        AjaxResponseBody result = new AjaxResponseBody();
-
-        if (!game.getName().equals("")) {
-            result.setCode("200");
-            result.setMsg("");
-            result.setResult(game.getName());
-        } else {
-            result.setCode("204");
-            result.setMsg("No game!");
-        }
-
-        return result;
-
+    @RequestMapping(value = "/rate_games", method = RequestMethod.GET)
+    public ModelAndView allGames(@RequestParam(defaultValue = "1") int page) {
+        List<Game> games = gameService.allGames(page);
+        int gamesCount = gameService.gamesCount();
+        int pagesCount = (gamesCount + 9)/10;
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("/rate_games");
+        modelAndView.addObject("page", page);
+        modelAndView.addObject("gamesList", games);
+        modelAndView.addObject("gamesCount", gamesCount);
+        modelAndView.addObject("pagesCount", pagesCount);
+        this.page = page;
+        return modelAndView;
     }
 
 }

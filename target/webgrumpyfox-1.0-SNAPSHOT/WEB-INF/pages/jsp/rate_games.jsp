@@ -18,85 +18,36 @@
 
 <body>
 <div class="container">
-    <div class="row">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 style="margin:5px">
-                </h3>
-            </div>
-            <table class="table table-fixed">
-                <thead>
-                <tr>
-                    <th class= "col-xs-2">#</th><th class="col-xs-8">Game</th><th class="col-xs-2">Rating</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td class="col-xs-2">1</td><td class="col-xs-8">Chess</td><td class="col-xs-2">
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                </td>
-                </tr>
-                <tr>
-                    <td class="col-xs-2">2</td><td class="col-xs-8">Pacman</td><td class="col-xs-2">
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                </td>
-                </tr>
-                <tr>
-                    <td class="col-xs-2">3</td><td class="col-xs-8">Snake</td><td class="col-xs-2">
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                </tr>
-                <tr>
-                    <td class="col-xs-2">4</td><td class="col-xs-8">Fireboy and Watergirl</td><td class="col-xs-2">
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star"></span>
-                </td>
-                </tr>
-                <tr>
-                    <td class="col-xs-2">5</td><td class="col-xs-8">Raid</td><td class="col-xs-2">
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star"></span>
-                </td>
-                </tr>
-                <tr>
-                    <td class="col-xs-2">6</td><td class="col-xs-8">2048</td><td class="col-xs-2">
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star"></span>
-                </td>
-                </tr>
-                <tr>
-                    <td class="col-xs-2">7</td><td class="col-xs-8">X_0</td><td class="col-xs-2">
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                </td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
+    <tr>
+        <th>№</th>
+        <th>name</th>
+        <th>description</th>
+        <th>author</th>
+        <th>rating</th>
+        <th>awards</th>
+        <th colspan="2">action</th>
+    </tr>
+    <c:forEach var="game" items="${gamesList}" varStatus="i">
+        <tr>
+            <td>${i.index + 1 + (page - 1) * 10}</td>
+            <td>${game.name}</td>
+            <td>${game.description}</td>
+            <td>${game.author}</td>
+            <td>${game.rating}</td>
+            <td>${game.awards}</td>
+            <td><a href="<c:url value="/game/${game.id}"/>">game</a></td>
+        </tr>
+    </c:forEach>
+    <tr>
+        <td colspan="7">
+            <c:forEach begin="${1}" end="${pagesCount}" step="1" varStatus="i">
+                <c:url value="/" var="url">
+                    <c:param name="page" value="${i.index}"/>
+                </c:url>
+                <a href="${url}">${i.index}</a>
+            </c:forEach>
+        </td>
+    </tr>
 </div>
 
     <script src="<c:url value="/res/js/rate_games.js"/>"></script>

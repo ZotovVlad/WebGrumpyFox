@@ -48,13 +48,6 @@ public class UserController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/rate_games", method = RequestMethod.GET)
-    public ModelAndView rate_games() {
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("/rate_games");
-        return modelAndView;
-    }
-
     @RequestMapping(value = "/rate_users", method = RequestMethod.GET)
     public ModelAndView rate_users() {
         ModelAndView modelAndView = new ModelAndView();

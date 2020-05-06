@@ -21,9 +21,9 @@ public class GameDAOImpl implements GameDAO {
 
     @Override
     @SuppressWarnings("unchecked")
-    public List<Game> allGames() {
+    public List<Game> allGames(int page) {
         Session session = sessionFactory.getCurrentSession();
-        return session.createQuery("from Game").list();
+        return session.createQuery("from Game").setFirstResult(10 * (page - 1)).setMaxResults(10).list();
     }
 
     @Override
@@ -51,6 +51,12 @@ public class GameDAOImpl implements GameDAO {
         Query query = session.createQuery("from Game where id = :id");
         query.setParameter("id", id);
         return ((List<Game>) query.getResultList()).get(0);
+    }
+
+    @Override
+    public int gamesCount() {
+        Session session = sessionFactory.getCurrentSession();
+        return session.createQuery("select count(*) from Game", Number.class).getSingleResult().intValue();
     }
 
 }

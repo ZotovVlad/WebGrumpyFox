@@ -17,8 +17,8 @@ public class GameServiceImpl implements GameService {
     }
 
     @Transactional
-    public List<Game> allGames() {
-        return gameDAO.allGames();
+    public List<Game> allGames(int page) {
+        return gameDAO.allGames(page);
     }
 
     @Transactional
@@ -39,6 +39,11 @@ public class GameServiceImpl implements GameService {
     @Transactional
     public Game getById(int id) {
         return gameDAO.getById(id);
+    }
+
+    @Transactional
+    public int gamesCount() {
+        return gameDAO.gamesCount();
     }
 
 }
