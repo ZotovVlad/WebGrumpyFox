@@ -18,13 +18,14 @@
 
 <body>
 <div class="container">
+    <table style="width:100%; color: antiquewhite">
     <tr>
         <th>№</th>
-        <th>name</th>
-        <th>description</th>
-        <th>author</th>
-        <th>rating</th>
-        <th>awards</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Author</th>
+        <th>Rating</th>
+        <th>Awards</th>
         <th colspan="2">action</th>
     </tr>
     <c:forEach var="game" items="${gamesList}" varStatus="i">
@@ -35,19 +36,20 @@
             <td>${game.author}</td>
             <td>${game.rating}</td>
             <td>${game.awards}</td>
-            <td><a href="<c:url value="/game/${game.id}"/>">game</a></td>
+            <td><a style="width:100%; color: rebeccapurple" href="<c:url value="/game/${game.id}"/>">Play game!</a></td>
         </tr>
     </c:forEach>
     <tr>
         <td colspan="7">
             <c:forEach begin="${1}" end="${pagesCount}" step="1" varStatus="i">
-                <c:url value="/" var="url">
+                <c:url value="/rate_games" var="url">
                     <c:param name="page" value="${i.index}"/>
                 </c:url>
-                <a href="${url}">${i.index}</a>
+                <a style="width:100%; color: #9e79ff" href="${url}">${i.index}</a>
             </c:forEach>
         </td>
     </tr>
+    </table>
 </div>
 
     <script src="<c:url value="/res/js/rate_games.js"/>"></script>

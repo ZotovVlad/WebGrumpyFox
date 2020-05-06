@@ -1,34 +1,19 @@
-.table-fixed thead {
- width: 97%;
+a{
+    color: #6f0000;
 }
 
-.table-fixed tbody {
- height: 230px;
- overflow-y: auto;
- width: 100%;
+table{
+    color: whitesmoke;
 }
 
-.table-fixed thead, .table-fixed tbody, .table-fixed tr, .table-fixed td, .table-fixed th {
- display: block;
+tr{
+    margin: 10px 10px 10px 10px;
 }
 
-.table-fixed tbody td, .table-fixed thead > tr> th {
- float: left;
- border-bottom-width: 0;
+tr{
+    margin-bottom: 10px;
 }
 
-.row{
-    display: block;
+body {
+    background: url("../images/Games.jpg");
 }
-
-.fa {
- font-size: 25px;
-}
-
-.checked {
- color: orange;
-}
-
-  body {
-      background: url("../images/Games.jpg");
-  }
