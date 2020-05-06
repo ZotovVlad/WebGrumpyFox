@@ -61,7 +61,7 @@ public class GameController {
     }
 
     @ResponseBody
-    @RequestMapping(value = "/game/{id}/likeGame", method = RequestMethod.GET)
+    @RequestMapping(value = "/game/{id}/likeGame", method = RequestMethod.POST)
     public AjaxResponseBody likeGame(@PathVariable("id") int id) {
         Game game = gameService.getById(id);
         game.setRating(game.getRating() + 1);
@@ -74,7 +74,7 @@ public class GameController {
     }
 
     @ResponseBody
-    @RequestMapping(value = "/game/{id}/dislikeGame", method = RequestMethod.GET)
+    @RequestMapping(value = "/game/{id}/dislikeGame", method = RequestMethod.POST)
     public AjaxResponseBody dislikeGame(@PathVariable("id") int id) {
         Game game = gameService.getById(id);
         game.setRating(game.getRating() - 1);
