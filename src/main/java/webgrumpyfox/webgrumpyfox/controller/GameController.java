@@ -7,6 +7,7 @@ import webgrumpyfox.webgrumpyfox.model.AjaxResponseBody;
 import webgrumpyfox.webgrumpyfox.model.Game;
 import webgrumpyfox.webgrumpyfox.service.GameService;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -57,6 +58,20 @@ public class GameController {
         result.setCode("200");
         result.setMsg("");
         result.setResult(Integer.toString(game.getRating()));
+        return result;
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/updateRatingGames", method = RequestMethod.GET)
+    public AjaxResponseBody updateRatingGames() {
+        String string = "";
+        for (int i = 0; i < gameService.gamesCount(); i++) {
+            string += Integer.toString(gameService.getById(i + 1).getRating()) + ",";
+        }
+        AjaxResponseBody result = new AjaxResponseBody();
+        result.setCode("200");
+        result.setMsg("");
+        result.setResult(string);
         return result;
     }
 

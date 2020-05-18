@@ -1,5 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page session="false"%>
+<%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <html>
 <head>
     <meta charset="utf-8">
@@ -14,6 +16,9 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
+
+    <script src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -26,7 +31,7 @@
         <th>Author</th>
         <th>Rating</th>
         <th>Awards</th>
-        <th colspan="2">action</th>
+        <th colspan="2">Action</th>
     </tr>
     <c:forEach var="game" items="${gamesList}" varStatus="i">
         <tr>
@@ -34,7 +39,7 @@
             <td>${game.name}</td>
             <td>${game.description}</td>
             <td>${game.author}</td>
-            <td>${game.rating}</td>
+            <td id = ${game.id}>${game.rating}</td>
             <td>${game.awards}</td>
             <td><a style="width:100%; color: rebeccapurple" href="<c:url value="/game/${game.id}"/>">Play game!</a></td>
         </tr>
@@ -51,6 +56,56 @@
     </tr>
     </table>
 </div>
+
+    <script>
+
+    jQuery(document).ready(function($) {
+
+        $(document).ready(function(){
+            updateRatingGames();
+            setInterval('updateRatingGames()', 15000);
+        });
+    });
+    function updateRatingGames() {
+        $.ajax({
+            type : "GET",
+            contentType : "application/json",
+            url : "${home}/updateRatingGames",
+            data : JSON.stringify(""),
+            dataType : 'json',
+            timeout : 100000,
+            async: true,
+            success : function(data) {
+                console.log("SUCCESS: ", data);
+                displayUpdateRatingGames(data);
+            },
+            error : function(e) {
+                console.log("ERROR: ", e);
+                displayUpdateRatingGame(e);
+            },
+            done : function(e) {
+                console.log("DONE");
+                enableSearchButton(true);
+            }
+        });
+    }
+
+    function displayUpdateRatingGames(data) {
+        var json = JSON.stringify(data, null, 4);
+        var obj = jQuery.parseJSON(json);
+        var str = obj.result;
+        str = str.split(",");
+        for (var i = 0; i < str.length; i++) {
+            var id = i + 1;
+            $("#" + id).html(str[i]);
+        }
+
+    }
+
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 
     <script src="<c:url value="/res/js/rate_games.js"/>"></script>
 </body>

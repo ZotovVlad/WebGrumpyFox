@@ -60,6 +60,7 @@
                 data : JSON.stringify(""),
                 dataType : 'json',
                 timeout : 100000,
+                async: true,
                 success : function(data) {
                     console.log("SUCCESS: ", data);
                     displayUpdateRatingGame(data);
