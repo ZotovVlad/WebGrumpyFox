@@ -5,8 +5,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link href="<c:url value="/res/images/GrumpyFox.png"/>" rel="shortcut icon" type="image/x-icon"/>
-    <link href="<c:url value="/res/css/profile.css"/>" rel="stylesheet" type="text/css"/>
+    <link href="<c:url value="/static/images/GrumpyFox.png"/>" rel="shortcut icon" type="image/x-icon"/>
+    <link href="<c:url value="/static/css/profile.css"/>" rel="stylesheet" type="text/css"/>
 
     <link href="/examples/libs/bootstrap-3/css/bootstrap.min.css" rel="stylesheet">
     <link href="../css/style_profile.css" rel="stylesheet" type="text/css" />
@@ -19,7 +19,7 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="profile-img">
-                    <img src="<c:url value="/res/images/Fedorov.jpg"/>" alt=""/>
+                    <img src="<c:url value="/static/images/Fedorov.jpg"/>" alt=""/>
                     <div class="file btn btn-lg btn-primary">
                         Change Photo
                         <input type="file" name="file"/>

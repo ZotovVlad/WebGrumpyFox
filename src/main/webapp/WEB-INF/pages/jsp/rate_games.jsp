@@ -8,8 +8,8 @@
     <meta name="viewport" content="width=device-width">
     <title>GrumpyFox</title>
 
-    <link href="<c:url value="/res/images/GrumpyFox.png"/>" rel="shortcut icon" type="image/x-icon"/>
-    <link href="<c:url value="/res/css/rate_games.css"/>" rel="stylesheet" type="text/css"/>
+    <link href="<c:url value="/static/images/GrumpyFox.png"/>" rel="shortcut icon" type="image/x-icon"/>
+    <link href="<c:url value="/static/css/rate_games.css"/>" rel="stylesheet" type="text/css"/>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
@@ -107,6 +107,6 @@
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 
-    <script src="<c:url value="/res/js/rate_games.js"/>"></script>
+    <script src="<c:url value="/static/js/rate_games.js"/>"></script>
 </body>
 </html>

@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width">
     <title>GrumpyFox</title>
 
-    <link href="<c:url value="/res/images/GrumpyFox.png"/>" rel="shortcut icon" type="image/x-icon"/>
-    <link href="<c:url value="/res/css/rate_users.css"/>" rel="stylesheet" type="text/css"/>
+    <link href="<c:url value="/static/images/GrumpyFox.png"/>" rel="shortcut icon" type="image/x-icon"/>
+    <link href="<c:url value="/static/css/rate_users.css"/>" rel="stylesheet" type="text/css"/>
 
     <link rel="stylesheet" href="https://bootstraptema.ru/plugins/2015/bootstrap3/bootstrap.min.css" />
     <link rel="stylesheet" href="https://bootstraptema.ru/plugins/font-awesome/4-4-0/font-awesome.min.css" />
@@ -114,6 +114,6 @@
     <script type="text/javascript" src="https://bootstraptema.ru/snippets/element/2020/bootstrap-table.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bubbly-bg@1.0.0/dist/bubbly-bg.js"></script>
 
-    <script src="<c:url value="/res/js/rate_users.js"/>"></script>
+    <script src="<c:url value="/static/js/rate_users.js"/>"></script>
 </body>
 </html>
