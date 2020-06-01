@@ -9,7 +9,6 @@
     <link href="<c:url value="/static/css/profile.css"/>" rel="stylesheet" type="text/css"/>
 
     <link href="/examples/libs/bootstrap-3/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../css/style_profile.css" rel="stylesheet" type="text/css" />
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 </head>
 
