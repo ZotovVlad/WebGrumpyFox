@@ -20,49 +20,7 @@
 </head>
 
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="#"><img src="<c:url value="/static/images/GrumpyFox.png"/>" alt="GrumpyFox" height="42" width="42"></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item ">
-                <a class="nav-link" href="#">
-                    Home
-                </a>
-            </li>
-            <li class="nav-item ">
-                <a class="nav-link" href="#">
-                    Games
-                </a>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Rating
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" onclick="location.href='<c:url value="/rate_games"/>'" class="nav-link" href="#">Games </a>
-                    <a class="dropdown-item" onclick="location.href='<c:url value="/rate_users"/>'" class="nav-link" href="#">Users </a>
-                </div>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Account
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" onclick="location.href='<c:url value="/profile"/>'" class="nav-link" href="#">Profile</a>
-                    <a class="dropdown-item" onclick="location.href='<c:url value="/"/>'" class="nav-link" href="#">Sign out</a>
-                </div>
-            </li>
-        </ul>
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
-    </div>
-</nav>
+<%@ include file="nav_bar.jsp" %>
 <div class="container-fluid" style="position: absolute; margin: 100px 0px 0px 0px;">
     <div class="row"  style="position: static;">
         <div id="number" class="col-3 bg-success" style="margin: 10px auto 5px auto;">.col-3</div>
