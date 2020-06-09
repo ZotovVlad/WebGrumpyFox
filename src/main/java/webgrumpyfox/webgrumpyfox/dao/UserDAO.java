@@ -14,4 +14,5 @@ public interface UserDAO {
     void authentication(String emailAddress, String password);
     String verifyRegistration(User user);
     String verifyAuthentication(User user);
+    String forgotPassword(User user);
 }

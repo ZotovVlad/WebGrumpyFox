@@ -50,6 +50,20 @@ public class GameController {
         return modelAndView;
     }
 
+    @RequestMapping(value = "/menu", method = RequestMethod.GET)
+    public ModelAndView gamesMenu() {
+        page = 1;
+        List<Game> games = gameService.allGames(page);
+        List<Game> gamesList = new ArrayList<>();
+        for (int i = 0; i < 6; i++) {
+            gamesList.add(games.get(i));
+        }
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("/menu");
+        modelAndView.addObject("gamesList", gamesList);
+        return modelAndView;
+    }
+
     @ResponseBody
     @RequestMapping(value = "/game/{id}/updateRatingGame", method = RequestMethod.GET)
     public AjaxResponseBody updateRatingGame(@PathVariable("id") int id) {

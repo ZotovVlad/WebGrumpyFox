@@ -34,12 +34,12 @@ public class UserController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/menu", method = RequestMethod.GET)
+    /*@RequestMapping(value = "/menu", method = RequestMethod.GET)
     public ModelAndView menu() {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("/menu");
         return modelAndView;
-    }
+    }*/
 
     @RequestMapping(value = "/profile", method = RequestMethod.GET)
     public ModelAndView profile() {
@@ -89,6 +89,7 @@ public class UserController {
         } else{
             userService.authentication(user.getEmailAddress(), user.getPassword());
             modelAndView.setViewName("/menu");
+            modelAndView = new ModelAndView("redirect:/menu");
         }
         return modelAndView;
     }
@@ -121,6 +122,7 @@ public class UserController {
         } else{
             userService.authentication(user.getEmailAddress(), user.getPassword());
             modelAndView.setViewName("/menu");
+            modelAndView = new ModelAndView("redirect:/menu");
         }
         return modelAndView;
     }
@@ -143,5 +145,35 @@ public class UserController {
         return result;
 
     }
+
+    @RequestMapping(value = "/forgot_pass", method = RequestMethod.POST)
+    public ModelAndView forgotPass() {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("/forgot_pass");
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/forgot_password", method = RequestMethod.POST)
+    public ModelAndView forgotPass(@ModelAttribute("forgot_password") User user) {
+        ModelAndView modelAndView = new ModelAndView();
+        String messageVerify = userService.forgotPassword(user);
+        if(!messageVerify.equals("OK")) {
+            if(messageVerify.equals("This email address does not exist")){
+                modelAndView.addObject("errorEmailAddressForgot", messageVerify);
+            }
+            if(messageVerify.equals("Incorrect format email address")){
+                modelAndView.addObject("errorEmailAddressForgot", messageVerify);
+            }
+            if(messageVerify.equals("Unknown error")){
+                modelAndView.addObject("errorForgot", messageVerify);
+            }
+            modelAndView.setViewName("/forgot_pass");
+        } else{
+            modelAndView.setViewName("/index");
+            modelAndView = new ModelAndView("redirect:/");
+        }
+        return modelAndView;
+    }
+
 
 }

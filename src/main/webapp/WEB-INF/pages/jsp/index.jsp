@@ -57,8 +57,10 @@
                                 <button name="authentication" type="submit" class="btn btn-default">Sign in</button>
                                 <p style="color: red">${errorSignInAuth}</p>
                             </div>
+                        </form>
+                        <form class="form-horizontal" method="post" action="<c:url value="/forgot_pass"/>">
                             <div class="form-group forgot-pass">
-                                <button type="submit" class="btn btn-default">forgot password</button>
+                                <button name="forgot_pass" type="submit" class="btn btn-default">forgot password</button>
                             </div>
                         </form>
                     </div>

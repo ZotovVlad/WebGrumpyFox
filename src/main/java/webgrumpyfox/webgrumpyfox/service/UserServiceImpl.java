@@ -96,4 +96,18 @@ public class UserServiceImpl implements UserService {
         return "Unknown error";
     }
 
+    @Transactional
+    public String forgotPassword(User user) {
+        String regex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$";
+        Pattern pattern = Pattern.compile(regex);
+        if (pattern.matcher(user.getEmailAddress()).matches()) {
+            return userDAO.forgotPassword(user);
+        } else {
+            if (!pattern.matcher(user.getEmailAddress()).matches()) {
+                return "Incorrect format email address";
+            }
+        }
+        return "Unknown error";
+    }
+
 }

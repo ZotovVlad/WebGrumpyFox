@@ -101,4 +101,19 @@ public class UserDAOImpl implements UserDAO {
         return message;
     }
 
+    @Override
+    @SuppressWarnings("unchecked")
+    public String forgotPassword(User user) {
+        String message = "";
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("from User where emailAddress = :emailAddress");
+        query.setParameter("emailAddress", user.getEmailAddress());
+        if(((List<User>) query.getResultList()).isEmpty()) {
+            message = "This email address does not exist";
+        }else{
+            message = "OK";
+        }
+        return message;
+    }
+
 }

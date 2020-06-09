@@ -20,19 +20,6 @@
 </head>
 
 <body>
-<%@ include file="nav_bar.jsp" %>
-<div class="container-fluid" style="position: absolute; margin: 100px 0px 0px 0px;">
-    <div class="row"  style="position: static;">
-        <div id="number" class="col-3 bg-success" style="margin: 10px auto 5px auto;">.col-3</div>
-        <div id="number" class="col-3 bg-warning" style="margin: 10px auto 5px auto;">.col-3</div>
-        <div id="number" class="col-3 bg-success" style="margin: 10px auto 5px auto;">.col-3</div>
-    </div>
-    <div class="row" style="position: static">
-        <div id="number"  class="col-3 bg-success" style="margin: 100px auto 5px auto;">.col-3</div>
-        <div id="number" class="col-3 bg-warning" style="margin: 100px auto 5px auto;">.col-3</div>
-        <div id="number" class="col-3 bg-success" style="margin: 100px auto 5px auto;">.col-3</div>
-    </div>
-</div>
 <div id="Clouds">
     <div class="Cloud Foreground"></div>
     <div class="Cloud Background"></div>
@@ -45,80 +32,23 @@
     <div class="Cloud Background"></div>
     <div class="Cloud Background"></div>
 </div>
+<%@ include file="nav_bar.jsp" %>
+<div class="container-fluid" style="position: absolute; margin: 100px 0px 0px 0px;">
+    <div class="row"  style="position: static;">
 
+        <c:forEach var="game" items="${gamesList}" varStatus="i">
+            <div class="col-3 " style="margin: 10px auto 5px auto;">
+                <h2>${game.name}</h2>
+                    ${game.description}
+                <p style="margin: 10px auto 5px 150px;">
+                    <img src="<c:url value="/static/images/GameChess.jpg"/>" width="211" height="111">
+                </p>
+                <a style="width:100%; color: rebeccapurple" href="<c:url value="/game/${game.id}"/>">Play game!</a> href="<c:url value="/game/${game.id}"/>">Play game!</a>
+            </div>
+        </c:forEach>
 
-
-<script>
-
-    jQuery(document).ready(function($) {
-
-        $(document).ready(function(){
-            show();
-            setInterval('show()', 5000);
-        });
-
-        /*$("#search-form").submit(function(event) {
-
-            //Disble the search button
-            enableSearchButton(false);
-
-            //Prevent the form from submitting via the browser.
-            event.preventDefault();
-
-            searchViaAjax();
-
-        });*/
-
-    });
-
-    var user = {}
-    user["lastName"] = "user0";
-    user["emailAddress"] = "email0";
-
-    function show() {
-
-        user["lastName"] += "user0";
-        user["emailAddress"] += "email0";
-
-        //search["username"]= $("#username").val();
-        //search["email"]= $("#email").val();
-
-        $.ajax({
-            type : "POST",
-            contentType : "application/json",
-            url : "${home}rating/getRatingResult",
-            data : JSON.stringify(user),
-            dataType : 'json',
-            timeout : 100000,
-            success : function(data) {
-                console.log("SUCCESS: ", data);
-                display(data);
-            },
-            error : function(e) {
-                console.log("ERROR: ", e);
-                display(e);
-            },
-            done : function(e) {
-                console.log("DONE");
-                enableSearchButton(true);
-            }
-        });
-
-    }
-
-    function enableSearchButton(flag) {
-        $("#btn-search").prop("disabled", flag);
-    }
-
-    function display(data) {
-        var json = JSON.stringify(data, null, 4);
-        var obj = jQuery.parseJSON(json);
-        var str = obj.result;
-        $('#number').html(str);
-    }
-
-</script>
-
+    </div>
+</div>
 
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
