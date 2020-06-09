@@ -34,19 +34,16 @@
 </div>
 <%@ include file="nav_bar.jsp" %>
 <div class="container-fluid" style="position: absolute; margin: 70px 0px 0px 0px;">
+    <div style="position: absolute;left: 45%;font-size: 20pt;">Top in the world games.</div>
     <div class="row" style="position: static; margin-left: 250px;">
-
         <c:forEach var="game" items="${gamesList}" varStatus="i">
             <div class="col-3 " style="margin: 100px 0px 5px 30px;box-shadow: 10px 10px 10px 10px rgba(10,10,10,0.5);border-radius:10px;border:10px black">
                 <h2>${game.name}</h2>
                 <h5>${game.description}</h5>
-                <!--p style="margin: 10px auto 5px 150px;">
-                </p-->
                 <img src="<c:url value="/static/images/GrumpyFox.png"/>" alt="" width="200" height="150"/>
                 <a style="width:100%; color: rebeccapurple" href="<c:url value="/game/${game.id}"/>">Play game!</a>
             </div>
         </c:forEach>
-
     </div>
 </div>
 
