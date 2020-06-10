@@ -210,8 +210,8 @@
 </div>
 <%@ include file="nav_bar.jsp" %>
 <div class="container">
-    <table style="width:100%; color: antiquewhite">
-    <tr>
+    <table style="width:100%; color: antiquewhite;border-spacing: 0px 30px;">
+    <tr style="border: 5px black; box-shadow: 0px 1px 10px black;">
         <th>Name</th>
         <th>Description</th>
         <th>Author</th>
@@ -220,7 +220,7 @@
         <th colspan="2">Action</th>
     </tr>
     <c:forEach var="game" items="${gamesList}" varStatus="i">
-        <tr>
+        <tr style="margin: 50px; border-radius: 5px; border: 5px black; box-shadow: 2px 2px 2px 2px black;">
             <td>${game.name}</td>
             <td>${game.description}</td>
             <td>${game.author}</td>
