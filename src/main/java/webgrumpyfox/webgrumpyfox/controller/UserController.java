@@ -2,8 +2,11 @@ package webgrumpyfox.webgrumpyfox.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.servlet.ModelAndView;
 import webgrumpyfox.webgrumpyfox.model.AjaxResponseBody;
+import webgrumpyfox.webgrumpyfox.model.Game;
 import webgrumpyfox.webgrumpyfox.model.User;
 import webgrumpyfox.webgrumpyfox.service.UserService;
 
@@ -20,12 +23,12 @@ public class UserController {
         this.userService = userService;
     }
 
-    private static int i = 0;
+    private static int scope = 0;
 
     @RequestMapping(value = "/show", method = RequestMethod.GET)
     public @ResponseBody int show(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        i++;
-        return i;
+        scope++;
+        return scope;
     }
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
@@ -42,10 +45,18 @@ public class UserController {
         return modelAndView;
     }*/
 
+
     @RequestMapping(value = "/profile", method = RequestMethod.GET)
     public ModelAndView profile() {
+        ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("/profile");
+        User user = (User) attr.getAttribute("user", 1);
+        assert user != null;
+        modelAndView.addObject("lastName", user.getLastName());
+        modelAndView.addObject("firstName", user.getFirstName());
+        modelAndView.addObject("emailAddress", user.getEmailAddress());
+        modelAndView.addObject("ratingUser", user.getRatingUser());
         return modelAndView;
     }
 
@@ -69,6 +80,16 @@ public class UserController {
         return modelAndView;
     }*/
 
+    @RequestMapping(value = "/profileEdit", method = RequestMethod.POST)
+    public ModelAndView profileEdit(@ModelAttribute("profileEdit") User user) {
+        ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
+        ModelAndView modelAndView = new ModelAndView("redirect:/profile");
+        modelAndView.setViewName("/profile");
+        User userEdit = (User) attr.getAttribute("user", 1);
+        userService.edit(userEdit);
+        return modelAndView;
+    }
+
     @RequestMapping(value = "/authentication", method = RequestMethod.POST)
     public ModelAndView authentication(@ModelAttribute("authentication") User user) {
         ModelAndView modelAndView = new ModelAndView();
@@ -88,9 +109,11 @@ public class UserController {
             }
             modelAndView.setViewName("/index");
         } else{
-            userService.authentication(user.getEmailAddress(), user.getPassword());
+            User userSession = userService.authentication(user.getEmailAddress(), user.getPassword());
             modelAndView.setViewName("/menu");
             modelAndView = new ModelAndView("redirect:/menu");
+            ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
+            attr.setAttribute("user", userSession, ++scope);
         }
         return modelAndView;
     }
@@ -121,9 +144,11 @@ public class UserController {
             }
             modelAndView.setViewName("/index");
         } else{
-            userService.authentication(user.getEmailAddress(), user.getPassword());
+            User userSession = userService.registration(user.getLastName(), user.getFirstName(), user.getEmailAddress(), user.getPassword(), user.getPasswordConfirm(), user.getRatingUser());
             modelAndView.setViewName("/menu");
             modelAndView = new ModelAndView("redirect:/menu");
+            ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
+            attr.setAttribute("user", userSession, ++scope);
         }
         return modelAndView;
     }

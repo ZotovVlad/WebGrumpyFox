@@ -59,13 +59,27 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
-    public void registration(String lastName, String firstName, String emailAddress, String password, String passwordConfirm, int ratingUser) {
-
+    public User registration(String lastName, String firstName, String emailAddress, String password, String passwordConfirm, int ratingUser) {
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("from User where lastName = :lastName and firstName = :firstName and emailAddress = :emailAddress and password = :password and passwordConfirm = :passwordConfirm and ratingUser = :ratingUser");
+        query.setParameter("lastName", lastName);
+        query.setParameter("firstName", firstName);
+        query.setParameter("emailAddress", emailAddress);
+        query.setParameter("password", password);
+        query.setParameter("passwordConfirm", passwordConfirm);
+        query.setParameter("ratingUser", ratingUser);
+        User user = ((List<User>) query.getResultList()).get(0);
+        return user;
     }
 
     @Override
-    public void authentication(String emailAddress, String password) {
-
+    public User authentication(String emailAddress, String password) {
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("from User where emailAddress = :emailAddress and password = :password");
+        query.setParameter("emailAddress", emailAddress);
+        query.setParameter("password", password);
+        User user = ((List<User>) query.getResultList()).get(0);
+        return user;
     }
 
     @Override

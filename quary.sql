@@ -12,7 +12,7 @@ create table users
         unique (lastName)
 )    charset = utf8;
 
-INSERT INTO users (lastName,firstName, emailAddress, password, passwordConfirm)
+INSERT INTO users (lastName, firstName, emailAddress, password, passwordConfirm)
 VALUES
 ("admin", "admin", "admin@admin.com", "admin", "admin"),
 ("bajurus", "bajurus", "bajurus@bajurus.com", "bajurus", "bajurus"),

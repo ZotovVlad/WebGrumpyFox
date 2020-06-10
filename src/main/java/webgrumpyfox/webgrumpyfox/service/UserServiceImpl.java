@@ -43,13 +43,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Transactional
-    public void registration(String lastName, String firstName, String emailAddress, String password, String passwordConfirm, int ratingUser) {
-        userDAO.registration(lastName, firstName, emailAddress, password, passwordConfirm, ratingUser);
+    public User registration(String lastName, String firstName, String emailAddress, String password, String passwordConfirm, int ratingUser) {
+        return userDAO.registration(lastName, firstName, emailAddress, password, passwordConfirm, ratingUser);
     }
 
     @Transactional
-    public void authentication(String emailAddress, String password) {
-        userDAO.authentication(emailAddress, password);
+    public User authentication(String emailAddress, String password) {
+        return userDAO.authentication(emailAddress, password);
     }
 
     @Transactional

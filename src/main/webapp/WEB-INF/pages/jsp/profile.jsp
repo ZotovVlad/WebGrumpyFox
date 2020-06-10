@@ -176,12 +176,16 @@
             font-weight: 600;
             color: #0062cc;
         }
+        .container{
+            color: black;
+        }
+
     </style>
 
 </head>
 
 <body>
-<div id="Clouds">
+<!--div id="Clouds">
     <div class="Cloud Foreground"></div>
     <div class="Cloud Background"></div>
     <div class="Cloud Foreground"></div>
@@ -192,86 +196,105 @@
     <div class="Cloud Foreground"></div>
     <div class="Cloud Background"></div>
     <div class="Cloud Background"></div>
-</div>
+</div-->
 <%@ include file="nav_bar.jsp" %>
 <div class="container emp-profile">
     <form method="post">
-        <div class="row">
-            <div class="col-md-4">
-                <div class="profile-img">
-                    <img src="<c:url value="/static/images/Fedorov.jpg"/>" alt=""/>
-                    <div class="file btn btn-lg btn-primary">
-                        Change Photo
-                        <input type="file" name="file"/>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="profile-head">
-                    <h5>
-                        Fedorov Petr Alekseevich
-                    </h5>
-                    <h6>
-                        Montazhnie Raboti
-                    </h6>
-                    <p class="proile-rating">RANKINGS : <span>100/10</span></p>
-                    <ul class="nav nav-tabs" id="myTab" role="tablist">
-                        <li class="nav-item">
-                            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-md-2">
-                <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile"/>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-4">
-                <div class="profile-work">
-                    <p>FAVORITE GAMES</p>
-                    <a href="">CS:GO</a>: <a href="">5/10</a><br/>
-                    <a href="">Копатель онлайн</a>: <a href="">6/10</a><br/>
-                    <a href="">Инженер онлайн</a>: <a href="">7/10</a>
-                </div>
-            </div>
-            <div class="col-md-8">
-                <div class="tab-content profile-tab" id="myTabContent">
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+        <div class="container">
+            <div class="row flex-lg-nowrap">
+                <div class="col">
+                    <div class="row">
+                        <div class="col mb-3">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="e-profile">
+                                        <div class="row">
+                                            <div class="col-12 col-sm-auto mb-3">
+                                                <div class="mx-auto" style="width: 140px;">
+                                                    <div class="d-flex justify-content-center align-items-center rounded" style="height: 140px; background-color: rgb(233, 236, 239);">
+                                                        <span style="color: rgb(166, 168, 170); font: bold 8pt Arial;">140x140</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col d-flex flex-column flex-sm-row justify-content-between mb-3">
+                                                <div class="text-center text-sm-left mb-2 mb-sm-0">
+                                                    <h4 class="pt-sm-2 pb-1 mb-0 text-nowrap">${lastName} ${firstName}</h4>
+                                                    <h4>RATING : ${ratingUser}</h4>
+                                                    <div class="mt-2">
+                                                        <button class="btn btn-primary" type="button">
+                                                            <i class="fa fa-fw fa-camera"></i>
+                                                            <span>Change Photo</span>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                                <div class="text-center text-sm-right">
+                                                    <span class="badge badge-secondary">User</span>
+                                                    <div class="text-muted"><small>Joined Today</small></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <ul class="nav nav-tabs">
+                                            <li class="nav-item"><a href="" class="active nav-link">Settings</a></li>
+                                        </ul>
+                                        <div class="tab-content pt-3">
+                                            <div class="tab-pane active">
+                                                <form class="form" method="post" action="<c:url value="/profileEdit"/>">
+                                                    <div class="mb-2"><b>Change profile data</b></div>
+                                                    <div class="row">
+                                                        <div class="col">
+                                                            <div class="row">
+                                                                <div class="col">
+                                                                    <div class="form-group">
+                                                                        <label>Last Name</label>
+                                                                        <input name="lastName" class="form-control" type="text" name="name" placeholder="${lastName}" value=${user.lastName}>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col">
+                                                                    <div class="form-group">
+                                                                        <label>Username</label>
+                                                                        <input name="firstName" class="form-control" type="text" name="username" placeholder="${firstName}" value=${user.firstName}>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col">
+                                                                    <div class="form-group">
+                                                                        <label>Email</label>
+                                                                        <input name="emailAddress" class="form-control" type="text" placeholder="${emailAddress}" value=${user.emailAddress}>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-12 col-sm-6 mb-3">
+                                                            <div class="row">
+                                                                <div class="col">
+                                                                    <div class="form-group">
+                                                                        <label>Password</label>
+                                                                        <input name="password" class="form-control" type="password" placeholder="password" value="${user.password}">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col">
+                                                                    <div class="form-group">
+                                                                        <label>Confirm <span class="d-none d-xl-inline">Password Confirm</span></label>
+                                                                        <input name="passwordConfirm" class="form-control" type="password" placeholder="passwordConfirm" value="${user.passwordConfirm}"></div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col d-flex justify-content-end">
+                                                            <button name="profileEdit" class="btn btn-primary" type="submit">Save Changes</button>
+                                                        </div>
+                                                    </div>
+                                                </form>
 
-
-                    <div class="tab-content">
-                        <div class="tab-pane active" id="description">
-                            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <label>User Id</label>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <p>fedorov#23</p>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <label>NickName</label>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <p>fedorov</p>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <label>Name</label>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <p>Fedorov Petr Alekseevich</p>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <label>Email</label>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <p>fedorov@gmail.com</p>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
