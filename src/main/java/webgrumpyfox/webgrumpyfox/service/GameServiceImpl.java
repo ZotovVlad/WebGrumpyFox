@@ -17,8 +17,8 @@ public class GameServiceImpl implements GameService {
     }
 
     @Transactional
-    public List<Game> allGames(int page) {
-        return gameDAO.allGames(page);
+    public List<Game> allGames() {
+        return gameDAO.allGames();
     }
 
     @Transactional

@@ -13,8 +13,6 @@ import java.util.List;
 @Controller
 public class GameController {
 
-    private int page;
-
     private final GameService gameService;
 
     public GameController(GameService gameService) {
@@ -36,31 +34,20 @@ public class GameController {
     }
 
     @RequestMapping(value = "/rate_games", method = RequestMethod.GET)
-    public ModelAndView allGames(@RequestParam(defaultValue = "1") int page) {
-        List<Game> games = gameService.allGames(page);
-        int gamesCount = gameService.gamesCount();
-        int pagesCount = (gamesCount + 9)/10;
+    public ModelAndView allGames() {
+        List<Game> games = gameService.allGames();
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("/rate_games");
-        modelAndView.addObject("page", page);
         modelAndView.addObject("gamesList", games);
-        modelAndView.addObject("gamesCount", gamesCount);
-        modelAndView.addObject("pagesCount", pagesCount);
-        this.page = page;
         return modelAndView;
     }
 
     @RequestMapping(value = "/menu", method = RequestMethod.GET)
     public ModelAndView gamesMenu() {
-        page = 1;
-        List<Game> games = gameService.allGames(page);
-        List<Game> gamesList = new ArrayList<>();
-        for (int i = 0; i < 6; i++) {
-            gamesList.add(games.get(i));
-        }
+        List<Game> games = gameService.allGames();
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("/menu");
-        modelAndView.addObject("gamesList", gamesList);
+        modelAndView.addObject("gamesList", games);
         return modelAndView;
     }
 

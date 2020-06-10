@@ -7,7 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import webgrumpyfox.webgrumpyfox.model.Game;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Repository
 public class GameDAOImpl implements GameDAO {
@@ -21,9 +24,13 @@ public class GameDAOImpl implements GameDAO {
 
     @Override
     @SuppressWarnings("unchecked")
-    public List<Game> allGames(int page) {
+    public List<Game> allGames() {
         Session session = sessionFactory.getCurrentSession();
-        return session.createQuery("from Game").setFirstResult(10 * (page - 1)).setMaxResults(10).list();
+        List<Game> games = session.createQuery("from Game").getResultList();
+        List<Game> sortedUsers = games.stream()
+                .sorted(Comparator.comparing(Game::getRating).reversed())
+                .collect(Collectors.toList());
+        return sortedUsers;
     }
 
     @Override

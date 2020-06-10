@@ -11,11 +11,6 @@
                     Home
                 </a>
             </li>
-            <li class="nav-item ">
-                <a onclick="location.href='<c:url value="/games"/>'" class="nav-link" href="/games">
-                    Games
-                </a>
-            </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Rating
