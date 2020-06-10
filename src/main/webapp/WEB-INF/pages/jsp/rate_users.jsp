@@ -82,103 +82,6 @@
         .Cloud.Background:nth-child(1){-webkit-animation-duration:146s;animation-duration:146s;height:7.84090909%}
         .Cloud{background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKQAAABgCAYAAACTzNnjAAAFCklEQVR42u3d34uVRRjA8YMsEi0iSwhdRBGhSJgZiNRFIkWhQVEXBipKUVBBLCF6k0h4UxFkBLq4QT/Qiyi80EgxCjXMWqOMtqy0bBNja92yXatN3c3pGc9sHU/v+X3emWfe93vx+QN23u+e95x5Z94pmNWFQo5NEytErzgoBsSIOCf+FqbEBTEhzophcVTsFxvFEjE152PZHGMukbcB6BAPij0uqgtl0bXCBvyjeFPcS2wEWc0y0ec++Ywnf7rwbyc8grQ6RY8Y9RhhJT+Jde4TmghzFuR08bo4ryDEpE/N58QUYsx+kFPcD4yzCkMsZz+1uwkyu0HeKYYiCLHcN2I2QWYnSPudbHubfy37NuFu4wQZeZD2k2Uw4hDLHRZdBBnnH3K/5ykcX86IeQQZl6civ0XXYv/RlhJkHLZkOMTypz7dBKnbyzmJsfTZeTdB6vRszmIsjXI5QeryWMa/M9ZinzjdTJA63CLGcxzjpD/ElQQZfq3iKDFe8lSHIAPqI8L/6SHIMB4nvorTQQsI0v+teoz4KjpBkH7tIrqaNhCkH9cnbK5C8q/uywiSHzKabCLIdM3K+QR4o8YysfVWcZDvElnD1hNkOi5XuilLu5MlOyzni3vESnGfWCRuIMjm1zgSWPM7GWvNXdonXkdM8Q0dCwmytu8Iy/vK9B3iRoJMnghnqifc8jb7yXkXQf5nLWGo2WR2HUGuLrxPDKq25D6d9yBPE4I6/e6rVO6CnMpkuFq/eLmFKwtyMRde/dOg2XkKkvlH/X5P9ZNSWZBvcMGjMJza6iJlQe7nYkfjozwE+TkXOiprsx7kES5yVOzLYK/IcpA/cJGj806Wg/yaCxzlzsersxpkPxc4SruzGuQBLm603yU7DPOQUOSJWIK0E6j2lcvPm+JJVp+674oDbiFuv5t/fEXs5cJG65DmIO3KY3vG3yCLbXO1N1xVkB3uWfQQFye3rtUS5DN1bC5C9j0cOki7XOwUFwJOb6gg7TmCW1lMizI7QwQ5nW2qqGCv7yDtwsxfGXhU0OczyKvECIOOKvb5CnKa2+TDoKOat3wFyaIH1ONFH0H2MNCo00NpBzmXR39owIy0gzzOIKNOv6X9LHsZg4wGp3xsM/ZMoUfF3aaZ4++qBDnIIKMNzrsHKb11Lb6oEORtDCRSYB81f+vWxzYUJBv2kTYb5vx6gzzHgMHTjsUXagV5BwMFzz78d5NYQpDbGCAEcOzissaEIL9kcBDIx0lBsrwMIW0uD3KcQUHgqaEFpUGyLQGhnSgNkgGBBg8QJDQ5Phkky82g5bvkNQXDscDQY6MNcpiBgBL9NsjDDAS0LPq1Qb7EQECJicLFSUkGAkpMLgMaYzCgKci3GQxomPqZDPImBgMa9uOULifnDWcI7VRpkIsYEAR2sHwX2GcMCgJak/QKPh4lIsgcpOhM2iv7JIODAPqqvY7vPQYInlf6zKsWpN2iOMBAwZMD9bzSudPwvh+kr3gofJ0vve/ikxIp36pXNHosiD2j5gMGD2ksyG3lJK917qc5A4l2eNW04Wi5OaZ41DADilZu0xtMmw/fXCV+ZnDRoFFTfBdpaudlLxVfsXMRNYy7W3SH8XSAu/01bo8s/kL8xQWAM+JC7DIeDnCvZqZ4RGxxi3/3iUPOJ+5TtRXfG/v6jeadNMVjlqsZquG0uwU164ybg2vFuPuh2ax23tkm3N91VLwmbjVNvPT+H7Ro4730ITNPAAAAAElFTkSuQmCC)}
         .Cloud.Background{background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEoAAAAqCAYAAAAUJM0rAAACFUlEQVRo3u3aPSwDYRzH8UZEbAYiYrDYjLZGpIPBJLGwSKwi0k1iYBKDdFJsEiMxSZgsFZJGiGjqJWEhSKuaNKRUG8r5PfI8SXOud72+PH2eu2f47Ndv7+V5/nee/G6bh5MWmIV9iEMWvkGjfiADD7AHk9BU6+PSNK0kPAINwwXkC6KU6gvC4HVyKB/clhHHCDnbTqHbSaEaYIv+OK3KyBk274RQrXBXg0B6B/QPkTIUiZTiEIm5gkbZQjXTJ5nG2ZFsocJ1iMQEZQk1VcdIGl2L9Yoeitwj3uocirgRPVRAgEjMoMihkgKFStIzK063QVHYhKF6h/IKFMlKGpaNlhM8Qq1JFIp5gQHeoSIShmJPST/PUElJQ7FN9hivUGmJQxE56OQRKiN5qL/NNY9QKQeEIpdgR7VC9cEqHeGeUyEHXHrMUiWhyKx6BV4dEsNMtNxQI4Ls33h5LidUoEYjXKEXoXZDLbgsEBOzE8qne8fmJhE7oWIujUQcwhyMmy0VSKRRF0cyWlclYMYo1LEKZOgRugpDpVWUot5ZLI8LlwN23bNQKoY1vwpVmmsS6kOFsPRJQl2qENZIqGkVwnp9xb5nUksEcxm2hZlQMcy3OYXTgx0VpOi2pl8/jwqpMP9sF5twBl08ctE7I/dws5l5D5y4OBj51HvdzluYdlik0RL06cjkKpSlB1Span5x/AQb5Hfrxyy/oU5ISeVw53AAAAAASUVORK5CYII=)}
-
-        .emp-profile{
-            opacity: 0.9;
-            padding: 3%;
-            margin-top: 3%;
-            margin-bottom: 3%;
-            border-radius: 0.5rem;
-            background: #fff;
-        }
-        .profile-img{
-            text-align: center;
-        }
-        .profile-img img{
-            width: 70%;
-            height: 100%;
-        }
-        .profile-img .file {
-            position: relative;
-            overflow: hidden;
-            margin-top: -20%;
-            width: 70%;
-            border: none;
-            border-radius: 0;
-            font-size: 15px;
-            background: #212529b8;
-        }
-        .profile-img .file input {
-            position: absolute;
-            opacity: 0;
-            right: 0;
-            top: 0;
-        }
-        .profile-head h5{
-            color: #333;
-        }
-        .profile-head h6{
-            color: #0062cc;
-        }
-        .profile-edit-btn{
-            border: none;
-            border-radius: 1.5rem;
-            width: 70%;
-            padding: 2%;
-            font-weight: 600;
-            color: #6c757d;
-            cursor: pointer;
-        }
-        .proile-rating{
-            font-size: 12px;
-            color: #818182;
-            margin-top: 5%;
-        }
-        .proile-rating span{
-            color: #495057;
-            font-size: 15px;
-            font-weight: 600;
-        }
-        .profile-head .nav-tabs{
-            margin-bottom:5%;
-        }
-        .profile-head .nav-tabs .nav-link{
-            font-weight:600;
-            border: none;
-        }
-        .profile-head .nav-tabs .nav-link.active{
-            border: none;
-            border-bottom:2px solid #0062cc;
-        }
-        .profile-work{
-            padding: 14%;
-            margin-top: -15%;
-        }
-        .profile-work p{
-            font-size: 12px;
-            color: #818182;
-            font-weight: 600;
-            margin-top: 10%;
-        }
-        .profile-work a{
-            text-decoration: none;
-            color: #495057;
-            font-weight: 600;
-            font-size: 14px;
-        }
-        .profile-work ul{
-            list-style: none;
-        }
-        .profile-tab label{
-            font-weight: 600;
-        }
-        .profile-tab p{
-            font-weight: 600;
-            color: #0062cc;
-        }
-        .wrapper{
-            opacity: 0.9;
-        }
     </style>
 
 </head>
@@ -199,91 +102,20 @@
 <%@ include file="nav_bar.jsp" %>
 <div class= "wrapper">
     <div class="container">
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <div class= "fresh-table full-color-orange">
-                    <!-- Изменение фона таблицы: full-color-blue, full-color-azure, full-color-green, full-color-red, full-color-orange
-                    Изменение фона тулбара страницы: toolbar-color-blue, toolbar-color-azure, toolbar-color-green, toolbar-color-red, toolbar-color-orange
-                    -->
-                    <table id="fresh-table" class="table">
-                        <thead>
-
-                        <th data-field="id" >#</th>
-                        <th data-field="firstName" data-sortable="true">firstName</th>
-                        <th data-field="lastName" data-sortable="true">lastName</th>
-                        <th data-field="emailAddress" data-sortable="true">emailAddress</th>
-                        <th data-field="password" data-sortable="true">password</th>
-                        <th data-field="actions" data-formatter="operateFormatter" data-events="operateEvents">Actions</th>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td>${getId1}</td>
-                            <td>${getFirstName1}</td>
-                            <td>${getLastName1}</td>
-                            <td>${getEmailAddress1}</td>
-                            <td>${getPassword1}</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>${getId2}</td>
-                            <td>${getFirstName2}</td>
-                            <td>${getLastName2}</td>
-                            <td>${getEmailAddress2}</td>
-                            <td>${getPassword2}</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>Sage Rodriguez</td>
-                            <td>Rodie</td>
-                            <td>Netherlands</td>
-                            <td>Chess</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>4</td>
-                            <td>Philip Chaney</td>
-                            <td>Philly</td>
-                            <td>Korea, South</td>
-                            <td>Chess</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>5</td>
-                            <td>Doris Greene</td>
-                            <td>Gossamery</td>
-                            <td>Malawi</td>
-                            <td>Chess</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>6</td>
-                            <td>Mason Porter</td>
-                            <td>MassX</td>
-                            <td>Chile</td>
-                            <td>Chess</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>7</td>
-                            <td>Alden Chen</td>
-                            <td>Cart</td>
-                            <td>Finland</td>
-                            <td>Chess</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>8</td>
-                            <td>Colton Hodges</td>
-                            <td>Col9</td>
-                            <td>Nicaragua</td>
-                            <td>Chess</td>
-                            <td></td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-        </div>
+        <table style="width:100%; color: antiquewhite;border-spacing: 0px 30px;">
+            <tr style="border: 5px black; box-shadow: 0px 1px 10px black;">
+                <th style="padding: 10px 10px 10px 10px;">Last Name</th>
+                <th style="padding: 10px 10px 10px 10px;">First Name</th>
+                <th style="padding: 10px 10px 10px 10px;">Rating user</th>
+            </tr>
+            <c:forEach var="user" items="${usersList}" varStatus="i">
+                <tr style="border-radius: 5px; border: 5px black; box-shadow: 2px 2px 2px 2px black;">
+                    <td style="padding: 10px 10px 10px 10px;">${user.lastName}</td>
+                    <td style="padding: 10px 10px 10px 10px;">${user.firstName}</td>
+                    <td style="padding: 10px 10px 10px 10px;">${user.ratingUser}</td>
+                </tr>
+            </c:forEach>
+        </table>
     </div>
 </div>
 

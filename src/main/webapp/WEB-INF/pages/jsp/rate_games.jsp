@@ -212,21 +212,21 @@
 <div class="container">
     <table style="width:100%; color: antiquewhite;border-spacing: 0px 30px;">
     <tr style="border: 5px black; box-shadow: 0px 1px 10px black;">
-        <th>Name</th>
-        <th>Description</th>
-        <th>Author</th>
-        <th>Rating</th>
-        <th>Awards</th>
-        <th colspan="2">Action</th>
+        <th style="padding: 10px 10px 10px 10px;">Name</th>
+        <th style="padding: 10px 10px 10px 10px;">Description</th>
+        <th style="padding: 10px 10px 10px 10px;">Author</th>
+        <th style="padding: 10px 10px 10px 10px;">Rating</th>
+        <th style="padding: 10px 10px 10px 10px;">Awards</th>
+        <th style="padding: 10px 10px 10px 10px;" colspan="2">Action</th>
     </tr>
     <c:forEach var="game" items="${gamesList}" varStatus="i">
         <tr style="margin: 50px; border-radius: 5px; border: 5px black; box-shadow: 2px 2px 2px 2px black;">
-            <td>${game.name}</td>
-            <td>${game.description}</td>
-            <td>${game.author}</td>
-            <td id = ${game.id}>${game.rating}</td>
-            <td>${game.awards}</td>
-            <td><a style="width:100%; color: rebeccapurple" href="<c:url value="/game/${game.id}"/>">Play game!</a></td>
+            <td style="padding: 10px 10px 10px 10px;">${game.name}</td>
+            <td style="padding: 10px 10px 10px 10px;">${game.description}</td>
+            <td style="padding: 10px 10px 10px 10px;">${game.author}</td>
+            <td style="padding: 10px 10px 10px 10px;" id = ${game.id}>${game.rating}</td>
+            <td style="padding: 10px 10px 10px 10px;">${game.awards}</td>
+            <td style="padding: 10px 10px 10px 10px;"><a style="width:100%; color: rebeccapurple" href="<c:url value="/game/${game.id}"/>">Play game!</a></td>
         </tr>
     </c:forEach>
     </table>

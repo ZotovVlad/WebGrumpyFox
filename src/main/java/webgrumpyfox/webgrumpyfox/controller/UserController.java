@@ -9,6 +9,7 @@ import webgrumpyfox.webgrumpyfox.service.UserService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.List;
 
 @Controller
 public class UserController {
@@ -48,7 +49,7 @@ public class UserController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/rate_users", method = RequestMethod.GET)
+    /*@RequestMapping(value = "/rate_users", method = RequestMethod.GET)
     public ModelAndView rate_users() {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("/rate_users");
@@ -66,7 +67,7 @@ public class UserController {
         modelAndView.addObject("getPassword2", userService.getById(2).getPassword());
 
         return modelAndView;
-    }
+    }*/
 
     @RequestMapping(value = "/authentication", method = RequestMethod.POST)
     public ModelAndView authentication(@ModelAttribute("authentication") User user) {
@@ -175,5 +176,13 @@ public class UserController {
         return modelAndView;
     }
 
+    @RequestMapping(value = "/rate_users", method = RequestMethod.GET)
+    public ModelAndView allUsers() {
+        List<User> users = userService.allUsers();
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("/rate_users");
+        modelAndView.addObject("usersList", users);
+        return modelAndView;
+    }
 
 }

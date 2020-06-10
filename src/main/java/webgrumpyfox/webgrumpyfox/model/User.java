@@ -25,6 +25,9 @@ public class User {
     @Column(name = "passwordConfirm")
     private String passwordConfirm;
 
+    @Column(name = "ratingUser")
+    private int ratingUser;
+
     public String getPasswordConfirm() {
         return passwordConfirm;
     }
@@ -57,6 +60,14 @@ public class User {
         this.lastName = lastName;
     }
 
+    public int getRatingUser() {
+        return ratingUser;
+    }
+
+    public void setRatingUser(int ratingUser) {
+        this.ratingUser = ratingUser;
+    }
+
     public String getEmailAddress() {
         return emailAddress;
     }
@@ -82,6 +93,7 @@ public class User {
                 ", emailAddress='" + emailAddress + '\'' +
                 ", password='" + password + '\'' +
                 ", passwordConfirm='" + passwordConfirm + '\'' +
+                ", ratingUser=" + ratingUser +
                 '}';
     }
 }

@@ -10,7 +10,7 @@ public interface UserDAO {
     void edit(User user);
     User getById(int id);
 
-    void registration(String lastName, String firstName, String emailAddress, String password, String passwordConfirm);
+    void registration(String lastName, String firstName, String emailAddress, String password, String passwordConfirm, int ratingUser);
     void authentication(String emailAddress, String password);
     String verifyRegistration(User user);
     String verifyAuthentication(User user);

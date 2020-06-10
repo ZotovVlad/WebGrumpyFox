@@ -43,8 +43,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Transactional
-    public void registration(String lastName, String firstName, String emailAddress, String password, String passwordConfirm) {
-        userDAO.registration(lastName, firstName, emailAddress, password, passwordConfirm);
+    public void registration(String lastName, String firstName, String emailAddress, String password, String passwordConfirm, int ratingUser) {
+        userDAO.registration(lastName, firstName, emailAddress, password, passwordConfirm, ratingUser);
     }
 
     @Transactional
