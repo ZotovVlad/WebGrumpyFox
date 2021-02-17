@@ -104,15 +104,15 @@
     <div class="container">
         <table style="width:100%; color: antiquewhite;border-spacing: 0px 30px;">
             <tr style="border: 5px black; box-shadow: 0px 1px 10px black;">
-                <th style="padding: 10px 10px 10px 10px;">Last Name</th>
-                <th style="padding: 10px 10px 10px 10px;">First Name</th>
-                <th style="padding: 10px 10px 10px 10px;">Rating user</th>
+                <th style="padding: 10px 10px 10px 10px;"><div class="col-12 div-index" style="z-index:1000;">Last Name</div></th>
+                <th style="padding: 10px 10px 10px 10px;"><div class="col-12 div-index" style="z-index:1000;">First Name</div></th>
+                <th style="padding: 10px 10px 10px 10px;"><div class="col-12 div-index" style="z-index:1000;">Rating user</div></th>
             </tr>
             <c:forEach var="user" items="${usersList}" varStatus="i">
                 <tr style="border-radius: 5px; border: 5px black; box-shadow: 2px 2px 2px 2px black;">
-                    <td style="padding: 10px 10px 10px 10px;">${user.lastName}</td>
-                    <td style="padding: 10px 10px 10px 10px;">${user.firstName}</td>
-                    <td style="padding: 10px 10px 10px 10px;">${user.ratingUser}</td>
+                    <td style="padding: 10px 10px 10px 10px;"><div class="col-12 div-index" style="z-index:1000;">${user.lastName}</div></td>
+                    <td style="padding: 10px 10px 10px 10px;"><div class="col-12 div-index" style="z-index:1000;">${user.firstName}</div></td>
+                    <td style="padding: 10px 10px 10px 10px;"><div class="col-12 div-index" style="z-index:1000;">${user.ratingUser}</div></td>
                 </tr>
             </c:forEach>
         </table>

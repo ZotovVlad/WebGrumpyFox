@@ -212,21 +212,21 @@
 <div class="container">
     <table style="width:100%; color: antiquewhite;border-spacing: 0px 30px;">
     <tr style="border: 5px black; box-shadow: 0px 1px 10px black;">
-        <th style="padding: 10px 10px 10px 10px;">Name</th>
-        <th style="padding: 10px 10px 10px 10px;">Description</th>
-        <th style="padding: 10px 10px 10px 10px;">Author</th>
-        <th style="padding: 10px 10px 10px 10px;">Rating</th>
-        <th style="padding: 10px 10px 10px 10px;">Awards</th>
-        <th style="padding: 10px 10px 10px 10px;" colspan="2">Action</th>
+        <th style="padding: 10px 0px 10px 0px;"><div class="col-12 div-index" style="z-index:1000;">Name</div></th>
+        <th style="padding: 10px 0px 10px 0px;"><div class="col-12 div-index" style="z-index:1000;">Description</div></th>
+        <th style="padding: 10px 0px 10px 0px;"><div class="col-12 div-index" style="z-index:1000;">Author</div></th>
+        <th style="padding: 10px 0px 10px 0px;"><div class="col-12 div-index" style="z-index:1000;">Rating</div></th>
+        <th style="padding: 10px 0px 10px 0px;"><div class="col-12 div-index" style="z-index:1000;">Awards</div></th>
+        <th style="padding: 10px 0px 10px 0px;" colspan="2"><div class="col-12 div-index" style="z-index:1000;">Action</div></th>
     </tr>
     <c:forEach var="game" items="${gamesList}" varStatus="i">
         <tr style="margin: 50px; border-radius: 5px; border: 5px black; box-shadow: 2px 2px 2px 2px black;">
-            <td style="padding: 10px 10px 10px 10px;">${game.name}</td>
-            <td style="padding: 10px 10px 10px 10px;">${game.description}</td>
-            <td style="padding: 10px 10px 10px 10px;">${game.author}</td>
-            <td style="padding: 10px 10px 10px 10px;" id = ${game.id}>${game.rating}</td>
-            <td style="padding: 10px 10px 10px 10px;">${game.awards}</td>
-            <td style="padding: 10px 10px 10px 10px;"><a style="width:100%; color: rebeccapurple" href="<c:url value="/game/${game.id}"/>">Play game!</a></td>
+            <td style="padding: 10px 0px 10px 0px;"><div class="col-12 div-index" style="z-index:1000;">${game.name}</div></td>
+            <td style="padding: 10px 0px 10px 0px;"><div class="col-12 div-index" style="z-index:1000;">${game.description}</div></td>
+            <td style="padding: 10px 0px 10px 0px;"><div class="col-12 div-index" style="z-index:1000;">${game.author}</div></td>
+            <td style="padding: 10px 0px 10px 0px;"><div class="col-12 div-index" style="z-index:1000;" id=${game.id}>${game.rating}</div></td>
+            <td style="padding: 10px 0px 10px 0px;"><div class="col-12 div-index" style="z-index:1000;">${game.awards}</div></td>
+            <td style="padding: 10px 0px 10px 0px;"><a class="col-12 div-index" style="width:100%; color: rebeccapurple; z-index:1000;" href="<c:url value="/game/${game.id}"/>">Play game!</a></td>
         </tr>
     </c:forEach>
     </table>

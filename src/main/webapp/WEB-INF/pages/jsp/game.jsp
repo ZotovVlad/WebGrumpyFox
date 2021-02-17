@@ -103,23 +103,23 @@
     <div class="container emp-game">
         <form method="post">
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-6 div-index" style="z-index:1000;">
                     <div class="game-head">
                         <h4>
                             <center> ${gameName} </center>
                         </h4>
-                        <h6>
+                        <h6 style="padding-left: 15px;">
                             ${gameDescription}
                         </h6>
                         </br>
-                        <div class="col-md-3">
+                        <div class="col-md-3 div-index" style="z-index:1000;">
                             <input type="submit" class="game-play-btn" name="btnAddMore" value="Play NOW"/>
                         </div>
                     </div>
                 </div>
                 <!--div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                  </div-->
-                <div class="col-md-6">
+                <div class="col-md-6" style="z-index:1000;">
                     <div class="progressBar">
                         <div class="greenBar" id="gameRating">${gameRating}</div>
                         <div class="rightSide">
