@@ -1,8 +1,15 @@
 # WebGrumpyFox
-website spring+DB+nginx+ajax+deployment+POST+front
 
-Working site with errors(:
 
-http://webgrumpyfox.ikhudyakov.nl/
+Web application development in:
 
-http://webgrumpyfox.ikhudyakov.nl/menu
+* backend - Java (spring boot) 
+* frontend - js, ajax
+* DB - mysql, hibernate ORM
+* deployment - nginx, CI/CD (shell script)
+
+
+URL website:
+
+* http://webgrumpyfox.ikhudyakov.nl/
+* http://webgrumpyfox.ikhudyakov.nl/menu
