@@ -6,7 +6,7 @@ Web application development in:
 * backend - Java (spring boot) 
 * frontend - js, ajax
 * DB - mysql, hibernate ORM
-* deployment - nginx, CI/CD (shell script)
+* deployment - nginx, bash script
 
 
 URL website:
