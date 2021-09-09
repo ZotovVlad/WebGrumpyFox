@@ -20,19 +20,8 @@
 </head>
 
 <body>
-<div id="Clouds">
-    <div class="Cloud Foreground"></div>
-    <div class="Cloud Background"></div>
-    <div class="Cloud Foreground"></div>
-    <div class="Cloud Background"></div>
-    <div class="Cloud Foreground"></div>
-    <div class="Cloud Background"></div>
-    <div class="Cloud Background"></div>
-    <div class="Cloud Foreground"></div>
-    <div class="Cloud Background"></div>
-    <div class="Cloud Background"></div>
-</div>
 <%@ include file="nav_bar.jsp" %>
+<%@ include file="cloud_animation.jsp" %>
 <div class="container emp-profile">
     <form method="post">
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">

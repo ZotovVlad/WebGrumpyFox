@@ -233,6 +233,20 @@ public class ApplicationController {
         return modelAndView;
     }
 
+    @RequestMapping(value = "/profile", method = RequestMethod.GET)
+    public ModelAndView profile() {
+        ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("/profile");
+        User user = (User) attr.getAttribute("user", 1);
+        assert user != null;
+        modelAndView.addObject("lastName", user.getLastName());
+        modelAndView.addObject("firstName", user.getFirstName());
+        modelAndView.addObject("emailAddress", user.getEmailAddress());
+        modelAndView.addObject("ratingUser", user.getRatingUser());
+        return modelAndView;
+    }
+
     @RequestMapping(value = "/profileEdit", method = RequestMethod.POST)
     public ModelAndView profileEdit(@ModelAttribute("profileEdit") User user) {
         ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
@@ -242,7 +256,5 @@ public class ApplicationController {
         userService.edit(userEdit);
         return modelAndView;
     }
-
-
 
 }

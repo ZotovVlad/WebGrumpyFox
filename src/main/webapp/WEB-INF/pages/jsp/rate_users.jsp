@@ -33,6 +33,7 @@
     <div class="Cloud Background"></div>
 </div>
 <%@ include file="nav_bar.jsp" %>
+<%@ include file="cloud_animation.jsp" %>
 <div class= "wrapper">
     <div class="container">
         <table style="width:100%; color: antiquewhite;border-spacing: 0px 30px;">
