@@ -34,6 +34,18 @@ public class GameDAOImpl implements GameDAO {
     }
 
     @Override
+    @SuppressWarnings("unchecked")
+    public List<Game> topGamesByCount(int count) {
+        Session session = sessionFactory.getCurrentSession();
+        List<Game> games = session.createQuery("from Game").getResultList();
+        List<Game> sortedUsers = games.stream()
+                .sorted(Comparator.comparing(Game::getRating).reversed())
+                .limit(count)
+                .collect(Collectors.toList());
+        return sortedUsers;
+    }
+
+    @Override
     public void add(Game game) {
         Session session = sessionFactory.getCurrentSession();
         session.persist(game);

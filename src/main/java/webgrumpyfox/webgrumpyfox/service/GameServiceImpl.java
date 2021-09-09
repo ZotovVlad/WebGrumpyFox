@@ -22,6 +22,9 @@ public class GameServiceImpl implements GameService {
     }
 
     @Transactional
+    public List<Game> topGamesByCount(int count) { return gameDAO.topGamesByCount(count); }
+
+    @Transactional
     public void add(Game game) {
         gameDAO.add(game);
     }

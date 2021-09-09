@@ -135,11 +135,12 @@
 
     <script>
 
-        jQuery(document).ready(function($) {
+        updateRatingGameInterval = 60000;
 
+        jQuery(document).ready(function($) {
             $(document).ready(function(){
                 updateRatingGame();
-                setInterval('updateRatingGame()', 5000);
+                setInterval('updateRatingGame()', updateRatingGameInterval);
             });
         });
         function updateRatingGame() {

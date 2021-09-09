@@ -1,4 +1,3 @@
-/*
 package webgrumpyfox.webgrumpyfox.controller;
 
 import org.springframework.stereotype.Controller;
@@ -9,89 +8,38 @@ import org.springframework.web.servlet.ModelAndView;
 import webgrumpyfox.webgrumpyfox.model.AjaxResponseBody;
 import webgrumpyfox.webgrumpyfox.model.Game;
 import webgrumpyfox.webgrumpyfox.model.User;
+import webgrumpyfox.webgrumpyfox.service.GameService;
 import webgrumpyfox.webgrumpyfox.service.UserService;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 @Controller
-public class UserController {
-
-    private final UserService userService;
-
-    public UserController(UserService userService) {
-        this.userService = userService;
-    }
+public class ApplicationController {
 
     private static int scope = 0;
 
-    @RequestMapping(value = "/show", method = RequestMethod.GET)
-    public @ResponseBody int show(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        scope++;
-        return scope;
+    private final UserService userService;
+    private final GameService gameService;
+
+    public ApplicationController(UserService userService, GameService gameService) {
+        this.userService = userService;
+        this.gameService = gameService;
     }
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    public ModelAndView index() {
+    public ModelAndView gamesMenu() {
+        int countTopGames = 9;
+        List<Game> games = gameService.topGamesByCount(countTopGames);
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("/index");
+        modelAndView.addObject("gamesList", games);
         return modelAndView;
     }
 
-    */
-/*@RequestMapping(value = "/menu", method = RequestMethod.GET)
-    public ModelAndView menu() {
+    @RequestMapping(value = "/authentication_registration", method = RequestMethod.GET)
+    public ModelAndView index() {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("/menu");
-        return modelAndView;
-    }*//*
-
-
-
-    @RequestMapping(value = "/profile", method = RequestMethod.GET)
-    public ModelAndView profile() {
-        ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("/profile");
-        User user = (User) attr.getAttribute("user", 1);
-        assert user != null;
-        modelAndView.addObject("lastName", user.getLastName());
-        modelAndView.addObject("firstName", user.getFirstName());
-        modelAndView.addObject("emailAddress", user.getEmailAddress());
-        modelAndView.addObject("ratingUser", user.getRatingUser());
-        return modelAndView;
-    }
-
-    */
-/*@RequestMapping(value = "/rate_users", method = RequestMethod.GET)
-    public ModelAndView rate_users() {
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("/rate_users");
-
-        modelAndView.addObject("getId1", userService.getById(1).getId());
-        modelAndView.addObject("getFirstName1", userService.getById(1).getFirstName());
-        modelAndView.addObject("getLastName1", userService.getById(1).getLastName());
-        modelAndView.addObject("getEmailAddress1", userService.getById(1).getEmailAddress());
-        modelAndView.addObject("getPassword1", userService.getById(1).getPassword());
-
-        modelAndView.addObject("getId2", userService.getById(2).getId());
-        modelAndView.addObject("getFirstName2", userService.getById(2).getFirstName());
-        modelAndView.addObject("getLastName2", userService.getById(2).getLastName());
-        modelAndView.addObject("getEmailAddress2", userService.getById(2).getEmailAddress());
-        modelAndView.addObject("getPassword2", userService.getById(2).getPassword());
-
-        return modelAndView;
-    }*//*
-
-
-    @RequestMapping(value = "/profileEdit", method = RequestMethod.POST)
-    public ModelAndView profileEdit(@ModelAttribute("profileEdit") User user) {
-        ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
-        ModelAndView modelAndView = new ModelAndView("redirect:/profile");
-        modelAndView.setViewName("/profile");
-        User userEdit = (User) attr.getAttribute("user", 1);
-        userService.edit(userEdit);
+        modelAndView.setViewName("/authentication_registration");
         return modelAndView;
     }
 
@@ -112,11 +60,11 @@ public class UserController {
             if(messageVerify.equals("Unknown error")){
                 modelAndView.addObject("errorSignInAuth", messageVerify);
             }
-            modelAndView.setViewName("/index");
+            modelAndView.setViewName("/authentication_registration");
         } else{
             User userSession = userService.authentication(user.getEmailAddress(), user.getPassword());
-            modelAndView.setViewName("/menu");
-            modelAndView = new ModelAndView("redirect:/menu");
+            modelAndView.setViewName("/index");
+            modelAndView = new ModelAndView("redirect:/");
             ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
             attr.setAttribute("user", userSession, ++scope);
         }
@@ -147,34 +95,15 @@ public class UserController {
             if(messageVerify.equals("Unknown error")){
                 modelAndView.addObject("errorSignUpReg", messageVerify);
             }
-            modelAndView.setViewName("/index");
+            modelAndView.setViewName("/authentication_registration");
         } else{
             User userSession = userService.registration(user.getLastName(), user.getFirstName(), user.getEmailAddress(), user.getPassword(), user.getPasswordConfirm(), user.getRatingUser());
-            modelAndView.setViewName("/menu");
-            modelAndView = new ModelAndView("redirect:/menu");
+            modelAndView.setViewName("/index");
+            modelAndView = new ModelAndView("redirect:/");
             ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
             attr.setAttribute("user", userSession, ++scope);
         }
         return modelAndView;
-    }
-
-    @ResponseBody
-    @RequestMapping(value = "/rating/getRatingResult")
-    public AjaxResponseBody getSearchResultViaAjax(@RequestBody User user) {
-
-        AjaxResponseBody result = new AjaxResponseBody();
-
-        if (!user.getLastName().equals("")) {
-            result.setCode("200");
-            result.setMsg("");
-            result.setResult(user.getLastName());
-        } else {
-            result.setCode("204");
-            result.setMsg("No user!");
-        }
-
-        return result;
-
     }
 
     @RequestMapping(value = "/forgot_pass", method = RequestMethod.POST)
@@ -200,8 +129,8 @@ public class UserController {
             }
             modelAndView.setViewName("/forgot_pass");
         } else{
-            modelAndView.setViewName("/index");
-            modelAndView = new ModelAndView("redirect:/");
+            modelAndView.setViewName("/authentication_registration");
+            modelAndView = new ModelAndView("redirect:/authentication_registration");
         }
         return modelAndView;
     }
@@ -215,4 +144,105 @@ public class UserController {
         return modelAndView;
     }
 
-}*/
+    @RequestMapping(value = "/rate_games", method = RequestMethod.GET)
+    public ModelAndView allGames() {
+        List<Game> games = gameService.allGames();
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("/rate_games");
+        modelAndView.addObject("gamesList", games);
+        return modelAndView;
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/rating/getRatingResult")
+    public AjaxResponseBody getSearchResultViaAjax(@RequestBody User user) {
+        AjaxResponseBody result = new AjaxResponseBody();
+        if (!user.getLastName().equals("")) {
+            result.setCode("200");
+            result.setMsg("");
+            result.setResult(user.getLastName());
+        } else {
+            result.setCode("204");
+            result.setMsg("No user!");
+        }
+        return result;
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/game/{id}/updateRatingGame", method = RequestMethod.GET)
+    public AjaxResponseBody updateRatingGame(@PathVariable("id") int id) {
+        Game game = gameService.getById(id);
+        AjaxResponseBody result = new AjaxResponseBody();
+        result.setCode("200");
+        result.setMsg("");
+        result.setResult(Integer.toString(game.getRating()));
+        return result;
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/updateRatingGames", method = RequestMethod.GET)
+    public AjaxResponseBody updateRatingGames() {
+        String string = "";
+        for (int i = 0; i < gameService.gamesCount(); i++) {
+            string += Integer.toString(gameService.getById(i + 1).getRating()) + ",";
+        }
+        AjaxResponseBody result = new AjaxResponseBody();
+        result.setCode("200");
+        result.setMsg("");
+        result.setResult(string);
+        return result;
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/game/{id}/likeGame", method = RequestMethod.POST)
+    public AjaxResponseBody likeGame(@PathVariable("id") int id) {
+        Game game = gameService.getById(id);
+        game.setRating(game.getRating() + 1);
+        gameService.edit(game);
+        AjaxResponseBody result = new AjaxResponseBody();
+        result.setCode("200");
+        result.setMsg("");
+        result.setResult(Integer.toString(game.getRating()));
+        return result;
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/game/{id}/dislikeGame", method = RequestMethod.POST)
+    public AjaxResponseBody dislikeGame(@PathVariable("id") int id) {
+        Game game = gameService.getById(id);
+        game.setRating(game.getRating() - 1);
+        gameService.edit(game);
+        AjaxResponseBody result = new AjaxResponseBody();
+        result.setCode("200");
+        result.setMsg("");
+        result.setResult(Integer.toString(game.getRating()));
+        return result;
+    }
+
+    @RequestMapping(value = "/game/{id}", method = RequestMethod.GET)
+    public ModelAndView game(@PathVariable("id") int id) {
+        Game game = gameService.getById(id);
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("/game");
+        modelAndView.addObject("gameId", game.getId());
+        modelAndView.addObject("gameName", game.getName());
+        modelAndView.addObject("gameDescription", game.getDescription());
+        modelAndView.addObject("gameAuthor", game.getAuthor());
+        modelAndView.addObject("gameRating", game.getRating());
+        modelAndView.addObject("gameAwards", game.getAwards());
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/profileEdit", method = RequestMethod.POST)
+    public ModelAndView profileEdit(@ModelAttribute("profileEdit") User user) {
+        ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
+        ModelAndView modelAndView = new ModelAndView("redirect:/profile");
+        modelAndView.setViewName("/profile");
+        User userEdit = (User) attr.getAttribute("user", 1);
+        userService.edit(userEdit);
+        return modelAndView;
+    }
+
+
+
+}
