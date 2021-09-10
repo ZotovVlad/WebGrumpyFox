@@ -14,10 +14,6 @@
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
-    <script src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
 </head>
 
 <body>
@@ -56,10 +52,105 @@
         </form>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 
     <script src="<c:url value="/static/js/game.js"/>"></script>
+
+<script>
+    updateRatingGameInterval = 60000;
+
+    jQuery(document).ready(function($) {
+        $(document).ready(function(){
+            updateRatingGame();
+            setInterval('updateRatingGame()', updateRatingGameInterval);
+        });
+    });
+    function updateRatingGame() {
+        $.ajax({
+            type : "GET",
+            contentType : "application/json",
+            url : "${home}${gameId}/updateRatingGame",
+            data : JSON.stringify(""),
+            dataType : 'json',
+            timeout : 100000,
+            async: true,
+            success : function(data) {
+                console.log("SUCCESS: ", data);
+                displayUpdateRatingGame(data);
+            },
+            error : function(e) {
+                console.log("ERROR: ", e);
+                displayUpdateRatingGame(e);
+            },
+            done : function(e) {
+                console.log("DONE");
+                enableSearchButton(true);
+            }
+        });
+    }
+    function displayUpdateRatingGame(data) {
+        var json = JSON.stringify(data, null, 4);
+        var obj = jQuery.parseJSON(json);
+        var str = obj.result;
+        $('#gameRating').html(str);
+    }
+
+    $("#like").click(function(){
+        $.ajax({
+            type : "POST",
+            contentType : "application/json",
+            url : "${home}${gameId}/likeGame",
+            data : JSON.stringify(""),
+            dataType : 'json',
+            timeout : 100000,
+            async: true,
+            success : function(data) {
+                console.log("SUCCESS: ", data);
+                displayUpdateRatingGame(data);
+            },
+            error : function(e) {
+                console.log("ERROR: ", e);
+                displayUpdateRatingGame(e);
+            },
+            done : function(e) {
+                console.log("DONE");
+                enableSearchButton(true);
+            }
+        });
+    })
+    $("#dislike").click(function(){
+        $.ajax({
+            type : "POST",
+            contentType : "application/json",
+            url : "${home}${gameId}/dislikeGame",
+            data : JSON.stringify(""),
+            dataType : 'json',
+            timeout : 100000,
+            async: true,
+            success : function(data) {
+                console.log("SUCCESS: ", data);
+                displayRating(data);
+            },
+            error : function(e) {
+                console.log("ERROR: ", e);
+                displayRating(e);
+            },
+            done : function(e) {
+                console.log("DONE");
+                enableSearchButton(true);
+            }
+        });
+    })
+    function displayRating(data) {
+        var json = JSON.stringify(data, null, 4);
+        var obj = jQuery.parseJSON(json);
+        var str = obj.result;
+        $('#gameRating').html(str);
+    }
+</script>
+
 </body>
 </html>
