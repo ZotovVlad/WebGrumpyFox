@@ -97,11 +97,11 @@ public class ApplicationController {
             }
             modelAndView.setViewName("/authentication_registration");
         } else{
-            User userSession = userService.registration(user.getLastName(), user.getFirstName(), user.getEmailAddress(), user.getPassword(), user.getPasswordConfirm(), user.getRatingUser());
+            userService.registration(user);
             modelAndView.setViewName("/index");
             modelAndView = new ModelAndView("redirect:/");
             ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
-            attr.setAttribute("user", userSession, ++scope);
+            attr.setAttribute("user", user, ++scope);
         }
         return modelAndView;
     }
@@ -180,7 +180,7 @@ public class ApplicationController {
     }
 
     @ResponseBody
-    @RequestMapping(value = "/updateRatingGames", method = RequestMethod.GET)
+    @RequestMapping(value = "/rate_games/updateRatingGames", method = RequestMethod.GET)
     public AjaxResponseBody updateRatingGames() {
         String string = "";
         for (int i = 0; i < gameService.gamesCount(); i++) {

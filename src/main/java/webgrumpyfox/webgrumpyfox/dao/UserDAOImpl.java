@@ -59,20 +59,6 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
-    public User registration(String lastName, String firstName, String emailAddress, String password, String passwordConfirm, int ratingUser) {
-        Session session = sessionFactory.getCurrentSession();
-        /*Query query = session.createQuery("from User where lastName = :lastName and firstName = :firstName and emailAddress = :emailAddress and password = :password and passwordConfirm = :passwordConfirm and ratingUser = :ratingUser");
-        query.setParameter("lastName", lastName);
-        query.setParameter("firstName", firstName);
-        query.setParameter("emailAddress", emailAddress);
-        query.setParameter("password", password);
-        query.setParameter("passwordConfirm", passwordConfirm);
-        query.setParameter("ratingUser", ratingUser);
-        User user = ((List<User>) query.getResultList()).get(0);*/
-        return new User();
-    }
-
-    @Override
     public User authentication(String emailAddress, String password) {
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery("from User where emailAddress = :emailAddress and password = :password");
@@ -90,16 +76,6 @@ public class UserDAOImpl implements UserDAO {
         Query query = session.createQuery("from User where emailAddress = :emailAddress");
         query.setParameter("emailAddress", user.getEmailAddress());
         if(((List<User>) query.getResultList()).isEmpty()) {
-            this.add(user);
-
-            /*Query queryInsert = session.createQuery("insert into User (lastName, firstName, emailAddress, password, passwordConfirm, ratingUser) select :lastName, :firstName, :emailAddress, :password, :passwordConfirm, :ratingUser from User");
-            queryInsert.setParameter("lastName", user.getLastName());
-            queryInsert.setParameter("firstName", user.getFirstName());
-            queryInsert.setParameter("emailAddress", user.getEmailAddress());
-            queryInsert.setParameter("password", user.getPassword());
-            queryInsert.setParameter("passwordConfirm", user.getPasswordConfirm());
-            queryInsert.setParameter("ratingUser", user.getRatingUser());
-            queryInsert.executeUpdate();*/
             message = "OK";
         }else{
             message = "User with this email address already exists";

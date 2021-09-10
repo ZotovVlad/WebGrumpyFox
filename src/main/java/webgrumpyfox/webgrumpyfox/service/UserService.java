@@ -11,7 +11,7 @@ public interface UserService {
     void edit(User user);
     User getById(int id);
 
-    User registration(String lastName, String firstName, String emailAddress, String password, String passwordConfirm, int ratingUser);
+    void registration(User user);
     User authentication(String emailAddress, String password);
     String verifyRegistration(User user);
     String verifyAuthentication(User user);
