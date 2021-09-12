@@ -180,7 +180,7 @@ public class ApplicationController {
     }
 
     @ResponseBody
-    @RequestMapping(value = "/rate_games/updateRatingGames", method = RequestMethod.GET)
+    @RequestMapping(value = "/updateRatingGames", method = RequestMethod.GET)
     public AjaxResponseBody updateRatingGames() {
         String string = "";
         for (int i = 0; i < gameService.gamesCount(); i++) {

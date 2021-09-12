@@ -72,7 +72,7 @@
         $.ajax({
             type : "GET",
             contentType : "application/json",
-            url : "${home}${gameId}/updateRatingGame",
+            url : "${gameId}/updateRatingGame",
             data : JSON.stringify(""),
             dataType : 'json',
             timeout : 100000,
@@ -102,7 +102,7 @@
         $.ajax({
             type : "POST",
             contentType : "application/json",
-            url : "${home}${gameId}/likeGame",
+            url : "${gameId}/likeGame",
             data : JSON.stringify(""),
             dataType : 'json',
             timeout : 100000,
@@ -125,7 +125,7 @@
         $.ajax({
             type : "POST",
             contentType : "application/json",
-            url : "${home}${gameId}/dislikeGame",
+            url : "${gameId}/dislikeGame",
             data : JSON.stringify(""),
             dataType : 'json',
             timeout : 100000,
